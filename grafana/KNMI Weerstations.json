@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1588671743638,
+  "iteration": 1588682017203,
   "links": [],
   "panels": [
     {
@@ -415,7 +415,7 @@
           "$$hashKey": "object:1258",
           "alias": "Onweer",
           "fill": 0,
-          "linewidth": 5,
+          "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
         },
@@ -423,7 +423,7 @@
           "$$hashKey": "object:1265",
           "alias": "Sneeuw",
           "fill": 0,
-          "linewidth": 5,
+          "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
         },
@@ -431,7 +431,7 @@
           "$$hashKey": "object:2967",
           "alias": "Ijsvorming",
           "fill": 0,
-          "linewidth": 5,
+          "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
         },
@@ -439,7 +439,7 @@
           "$$hashKey": "object:3144",
           "alias": "Mist",
           "fill": 0,
-          "linewidth": 5,
+          "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
         }
@@ -1378,7 +1378,7 @@
           "$$hashKey": "object:5582",
           "alias": "Mist",
           "fill": 0,
-          "linewidth": 5,
+          "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
         },
@@ -1629,7 +1629,8 @@
     },
     {
       "aliasColors": {
-        "Dekkingsgraad (9 = bovenlucht onzichtbaar)": "semi-dark-blue"
+        "Bovenlucht onzichtbaar": "rgb(255, 255, 255)",
+        "Dekkingsgraad": "rgb(164, 164, 164)"
       },
       "bars": false,
       "dashLength": 10,
@@ -1665,13 +1666,20 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:3650",
+          "alias": "Bovenlucht onzichtbaar",
+          "fill": 0,
+          "linewidth": 2
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Dekkingsgraad (9 = bovenlucht onzichtbaar)",
+          "alias": "Dekkingsgraad",
           "groupBy": [
             {
               "params": [
@@ -1702,10 +1710,71 @@
               {
                 "params": [],
                 "type": "mean"
+              },
+              {
+                "params": [
+                  "*100/8"
+                ],
+                "type": "math"
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "N",
+              "operator": "<",
+              "value": "9"
+            }
+          ]
+        },
+        {
+          "alias": "Bovenlucht onzichtbaar",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "/^$Stations$/",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "N"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "*100/9"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "N",
+              "operator": ">",
+              "value": "8"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1729,11 +1798,12 @@
       "yaxes": [
         {
           "$$hashKey": "object:4840",
-          "format": "short",
+          "decimals": null,
+          "format": "percent",
           "label": "",
           "logBase": 1,
-          "max": "9",
-          "min": null,
+          "max": "100",
+          "min": "0",
           "show": true
         },
         {
@@ -1934,5 +2004,5 @@
   "variables": {
     "list": []
   },
-  "version": 2
+  "version": 4
 }
