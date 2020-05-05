@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1588671048518,
+  "iteration": 1588671743638,
   "links": [],
   "panels": [
     {
@@ -1884,7 +1884,11 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "tags": [],
+          "text": "De Bilt",
+          "value": "De Bilt"
+        },
         "datasource": "${DS_KNMI}",
         "definition": "SHOW MEASUREMENTS",
         "hide": 0,
