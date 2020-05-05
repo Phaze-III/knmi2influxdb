@@ -52,7 +52,6 @@
   "panels": [
     {
       "aliasColors": {
-        "Grondtemperatuur": "light-blue",
         "Grondtemperatuur (min)": "light-blue",
         "Temperatuur": "yellow"
       },
@@ -91,15 +90,6 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:1792",
-          "alias": "Grondtemperatuur",
-          "lines": false,
-          "pointradius": 1,
-          "points": true
-        }
-      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -366,12 +356,9 @@
     },
     {
       "aliasColors": {
-        "< 0.05": "light-blue",
         "< 0.05 mm": "light-blue",
-        "Drizzle": "light-blue",
         "Ijsvorming": "dark-purple",
         "Mist": "rgb(83, 83, 83)",
-        "Motregen": "light-blue",
         "Neerslag": "dark-blue",
         "Onweer": "dark-red",
         "Sneeuw": "yellow"
@@ -747,8 +734,7 @@
     {
       "aliasColors": {
         "Dauwpunt": "dark-purple",
-        "Rel. luchtvochtigheid": "dark-blue",
-        "knmi.mean": "blue"
+        "Rel. luchtvochtigheid": "dark-blue"
       },
       "bars": false,
       "dashLength": 10,
@@ -924,8 +910,7 @@
     {
       "aliasColors": {
         "Veranderlijk": "yellow",
-        "Windrichting": "red",
-        "Windrichting  (90=O, 180=Z, 270=W ,360=N)": "dark-red",
+        "Windrichting  (90=O, 180=Z, 270=W ,360/1=N)": "dark-red",
         "Windstil": "green"
       },
       "bars": false,
@@ -975,7 +960,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Windrichting  (90=O, 180=Z, 270=W ,360=N)",
+          "alias": "Windrichting  (90=O, 180=Z, 270=W ,360/1=N)",
           "groupBy": [
             {
               "params": [
@@ -1156,7 +1141,6 @@
     },
     {
       "aliasColors": {
-        "Windstoot (max)": "super-light-red",
         "Windstoten (max)": "super-light-red"
       },
       "bars": false,
@@ -1331,12 +1315,9 @@
     {
       "aliasColors": {
         "< 5km": "rgb(85, 85, 85)",
-        ">35km": "rgb(255, 255, 255)",
-        ">5km": "rgb(180, 180, 180)",
-        "Mist": "dark-red",
-        "Zicht": "rgb(111, 109, 112)",
-        "Zicht (>35km)": "rgb(255, 255, 255)",
-        "Zicht (>5km)": "rgb(172, 172, 170)"
+        "> 35km": "rgb(255, 255, 255)",
+        "> 5km": "rgb(180, 180, 180)",
+        "Mist": "dark-red"
       },
       "bars": false,
       "dashLength": 10,
@@ -1381,11 +1362,6 @@
           "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
-        },
-        {
-          "$$hashKey": "object:8849",
-          "alias": "Zicht (>5km)",
-          "yaxis": 1
         }
       ],
       "spaceLength": 10,
@@ -1408,7 +1384,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "knmi",
+          "measurement": "/^$Stations$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT (mean(\"VV\") +1)*100 FROM /^$Stations$/ WHERE (\"VV\" < 51) AND $timeFilter GROUP BY time($__interval) fill(null)",
@@ -1444,7 +1420,7 @@
           ]
         },
         {
-          "alias": ">5km",
+          "alias": "> 5km",
           "groupBy": [
             {
               "params": [
@@ -1459,7 +1435,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "knmi",
+          "measurement": "/^$Stations$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT (mean(\"VV\") -50)*1000  FROM /^$Stations$/ WHERE (\"VV\" > 50) AND (\"VV\" < 80) AND $timeFilter GROUP BY time($__interval) fill(null)",
@@ -1495,7 +1471,7 @@
           ]
         },
         {
-          "alias": ">35km",
+          "alias": "> 35km",
           "groupBy": [
             {
               "params": [
@@ -1510,7 +1486,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "knmi",
+          "measurement": "/^$Stations$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT ((mean(\"VV\")-80)*5+35)*1000  FROM /^$Stations$/ WHERE (\"VV\" > 79) AND $timeFilter GROUP BY time($__interval) fill(null)",
