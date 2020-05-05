@@ -6,6 +6,7 @@
 
 export INFLUXDB_DATABASE=knmi
 export INFLUXDB_HOST=localhost
+export INFLUXDB_PORT=8086
 
 # Set begin date to yesterday, end date to today
 if date --version >/dev/null 2>&1
