@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1588682017203,
+  "iteration": 1588713124424,
   "links": [],
   "panels": [
     {
@@ -90,6 +90,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -402,6 +403,7 @@
           "$$hashKey": "object:1258",
           "alias": "Onweer",
           "fill": 0,
+          "hideTooltip": true,
           "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
@@ -410,6 +412,7 @@
           "$$hashKey": "object:1265",
           "alias": "Sneeuw",
           "fill": 0,
+          "hideTooltip": true,
           "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
@@ -418,6 +421,7 @@
           "$$hashKey": "object:2967",
           "alias": "Ijsvorming",
           "fill": 0,
+          "hideTooltip": true,
           "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
@@ -426,9 +430,15 @@
           "$$hashKey": "object:3144",
           "alias": "Mist",
           "fill": 0,
+          "hideTooltip": true,
           "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
+        },
+        {
+          "$$hashKey": "object:1188",
+          "alias": "< 0.05 mm",
+          "hideTooltip": true
         }
       ],
       "spaceLength": 10,
@@ -952,7 +962,13 @@
         {
           "$$hashKey": "object:7999",
           "alias": "Veranderlijk",
+          "hideTooltip": true,
           "yaxis": 2
+        },
+        {
+          "$$hashKey": "object:504",
+          "alias": "Windstil",
+          "hideTooltip": true
         }
       ],
       "spaceLength": 10,
@@ -1647,6 +1663,7 @@
           "$$hashKey": "object:3650",
           "alias": "Bovenlucht onzichtbaar",
           "fill": 0,
+          "hideTooltip": true,
           "linewidth": 2
         }
       ],
