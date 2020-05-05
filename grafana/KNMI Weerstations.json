@@ -1816,7 +1816,7 @@
     },
     {
       "aliasColors": {
-        "Straling (J/cm2)": "yellow"
+        "Straling": "yellow"
       },
       "bars": false,
       "dashLength": 10,
@@ -1858,7 +1858,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Straling (J/cm2)",
+          "alias": "Straling",
           "groupBy": [
             {
               "params": [
@@ -1889,6 +1889,12 @@
               {
                 "params": [],
                 "type": "mean"
+              },
+              {
+                "params": [
+                  "*10000/3600"
+                ],
+                "type": "math"
               }
             ]
           ],
@@ -1916,7 +1922,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:537",
-          "format": "none",
+          "format": "Wm2",
           "label": "",
           "logBase": 1,
           "max": null,
