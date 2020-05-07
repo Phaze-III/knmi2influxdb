@@ -8,37 +8,34 @@ export INFLUXDB_DATABASE=knmi
 export INFLUXDB_HOST=localhost
 export INFLUXDB_PORT=8086
 
-# Set begin date to yesterday, end date to today
+# Set begin and end date to yesterday
 if date --version >/dev/null 2>&1
 then
    # GNU date
    byear=$(date -d "1 days ago" "+%Y")
    bmonth=$(date -d "1 days ago" "+%m")
    bday=$(date -d "1 days ago" "+%d")
-
-   eyear=$(date -d today "+%Y")
-   emonth=$(date -d today "+%m")
-   eday=$(date -d today "+%d")
 else
    # BSD date
    byear=$(date -j -v-1d "+%Y")
    bmonth=$(date -j -v-1d "+%m")
    bday=$(date -j -v-1d "+%d")
-
-   eyear=$(date -j "+%Y")
-   emonth=$(date -j "+%m")
-   eday=$(date -j "+%d")
 fi
 
-# Override automatic begin- and end-dates
-# To be used when bulk-importing historical data
+eyear=${byear}
+emonth=${bmonth}
+eday=${bday}
 
-#byear=2019
+# Override automatic begin- and end-dates by uncommenting a b*
+# and/or e* block. To be used when bulk-importing historical data.
+# Blocks of 3 months should be within InfluxDB limits.
+
+#byear=2020
 #bmonth=01
 #bday=01
 
-#eyear=2019
-#emonth=12
+#eyear=2020
+#emonth=03
 #eday=31
 
 # Sensor can be ALL or a subset
