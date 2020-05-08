@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1588713124424,
+  "iteration": 1588961245259,
   "links": [],
   "panels": [
     {
@@ -1147,7 +1147,7 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -2003,5 +2003,5 @@
   "variables": {
     "list": []
   },
-  "version": 4
+  "version": 5
 }
