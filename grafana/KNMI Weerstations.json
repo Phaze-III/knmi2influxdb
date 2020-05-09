@@ -490,7 +490,7 @@
             {
               "key": "RH",
               "operator": ">",
-              "value": "0"
+              "value": "-1"
             }
           ]
         },
@@ -2003,5 +2003,5 @@
   "variables": {
     "list": []
   },
-  "version": 5
+  "version": 6
 }
