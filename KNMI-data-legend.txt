@@ -1,0 +1,83 @@
+# BRON: KONINKLIJK NEDERLANDS METEOROLOGISCH INSTITUUT (KNMI)
+# Opmerking: door stationsverplaatsingen en veranderingen in waarneemmethodieken zijn deze tijdreeksen van uurwaarden mogelijk inhomogeen! Dat betekent dat deze reeks van gemeten waarden niet geschikt is voor trendanalyse. Voor studies naar klimaatverandering verwijzen we naar de gehomogeniseerde reeks maandtemperaturen van De Bilt <http://www.knmi.nl/klimatologie/onderzoeksgegevens/homogeen_260/index.html> of de Centraal Nederland Temperatuur <http://www.knmi.nl/klimatologie/onderzoeksgegevens/CNT/>.
+# 
+# 
+# STN      LON(east)   LAT(north)     ALT(m)  NAME
+# 391:         6.197       51.498      19.50  ARCEN
+# 370:         5.377       51.451      22.60  EINDHOVEN
+# 331:         4.193       51.480       0.00  THOLEN
+# 315:         3.998       51.447       0.00  HANSWEERT
+# 324:         4.006       51.596       0.00  STAVENISSE
+# 375:         5.707       51.659      22.00  VOLKEL
+# 380:         5.762       50.906     114.30  MAASTRICHT
+# 240:         4.790       52.318      -3.30  SCHIPHOL
+# 286:         7.150       53.196      -0.20  NIEUW BEERTA
+# 310:         3.596       51.442       8.00  VLISSINGEN
+# 283:         6.657       52.069      29.10  HUPSEL
+# 280:         6.585       53.125       5.20  EELDE
+# 273:         5.888       52.703      -3.30  MARKNESSE
+# 323:         3.884       51.527       1.40  WILHELMINADORP
+# 249:         4.979       52.644      -2.40  BERKHOUT
+# 377:         5.763       51.198      30.00  ELL
+# 316:         3.694       51.657       0.00  SCHAAR
+# 313:         3.242       51.505       0.00  VLAKTE V.D. RAAN
+# 277:         6.200       53.413       2.90  LAUWERSOOG
+# 348:         4.926       51.970      -0.70  CABAUW
+# 308:         3.379       51.381       0.00  CADZAND
+# 319:         3.861       51.226       1.70  WESTDORPE
+# 215:         4.437       52.141      -1.10  VOORSCHOTEN
+# 278:         6.259       52.435       3.60  HEINO
+# 285:         6.399       53.575       0.00  HUIBERTGAT
+# 343:         4.313       51.893       3.50  R'DAM-GEULHAVEN
+# 225:         4.555       52.463       4.40  IJMUIDEN
+# 330:         4.122       51.992      11.90  HOEK VAN HOLLAND
+# 267:         5.384       52.898      -1.30  STAVOREN
+# 269:         5.520       52.458      -3.70  LELYSTAD
+# 344:         4.447       51.962      -4.30  ROTTERDAM
+# 275:         5.873       52.056      48.20  DEELEN
+# 235:         4.781       52.928       1.20  DE KOOY
+# 257:         4.603       52.506       8.50  WIJK AAN ZEE
+# 290:         6.891       52.274      34.80  TWENTHE
+# 350:         4.936       51.566      14.90  GILZE-RIJEN
+# 251:         5.346       53.392       0.70  HOORN (TERSCHELLING)
+# 210:         4.430       52.171      -0.20  VALKENBURG
+# 248:         5.174       52.634       0.80  WIJDENES
+# 279:         6.574       52.750      15.80  HOOGEVEEN
+# 258:         5.401       52.649       7.30  HOUTRIBDIJK
+# 356:         5.146       51.859       0.70  HERWIJNEN
+# 209:         4.518       52.465       0.00  IJMOND
+# 265:         5.274       52.130      13.90  SOESTERBERG
+# 312:         3.622       51.768       0.00  OOSTERSCHELDE
+# 340:         4.342       51.449      19.20  WOENSDRECHT
+# 260:         5.180       52.100       1.90  DE BILT
+# 270:         5.752       53.224       1.20  LEEUWARDEN
+# 311:         3.672       51.379       0.00  HOOFDPLAAT
+# 242:         4.921       53.241      10.80  VLIELAND
+# 
+# YYYYMMDD = datum (YYYY=jaar,MM=maand,DD=dag); 
+# HH       = tijd (HH=uur, UT.12 UT=13 MET, 14 MEZT. Uurvak 05 loopt van 04.00 UT tot 5.00 UT; 
+# DD       = Windrichting (in graden) gemiddeld over de laatste 10 minuten van het afgelopen uur (360=noord, 90=oost, 180=zuid, 270=west, 0=windstil 990=veranderlijk. Zie http://www.knmi.nl/kennis-en-datacentrum/achtergrond/klimatologische-brochures-en-boeken; 
+# FH       = Uurgemiddelde windsnelheid (in 0.1 m/s). Zie http://www.knmi.nl/kennis-en-datacentrum/achtergrond/klimatologische-brochures-en-boeken; 
+# FF       = Windsnelheid (in 0.1 m/s) gemiddeld over de laatste 10 minuten van het afgelopen uur; 
+# FX       = Hoogste windstoot (in 0.1 m/s) over het afgelopen uurvak; 
+# T        = Temperatuur (in 0.1 graden Celsius) op 1.50 m hoogte tijdens de waarneming; 
+# T10N     = Minimumtemperatuur (in 0.1 graden Celsius) op 10 cm hoogte in de afgelopen 6 uur; 
+# TD       = Dauwpuntstemperatuur (in 0.1 graden Celsius) op 1.50 m hoogte tijdens de waarneming; 
+# SQ       = Duur van de zonneschijn (in 0.1 uren) per uurvak, berekend uit globale straling  (-1 for <0.05 uur); 
+# Q        = Globale straling (in J/cm2) per uurvak; 
+# DR       = Duur van de neerslag (in 0.1 uur) per uurvak; 
+# RH       = Uursom van de neerslag (in 0.1 mm) (-1 voor <0.05 mm); 
+# P        = Luchtdruk (in 0.1 hPa) herleid naar zeeniveau, tijdens de waarneming; 
+# VV       = Horizontaal zicht tijdens de waarneming (0=minder dan 100m, 1=100-200m, 2=200-300m,..., 49=4900-5000m, 50=5-6km, 56=6-7km, 57=7-8km, ..., 79=29-30km, 80=30-35km, 81=35-40km,..., 89=meer dan 70km); 
+# N        = Bewolking (bedekkingsgraad van de bovenlucht in achtsten), tijdens de waarneming (9=bovenlucht onzichtbaar); 
+# U        = Relatieve vochtigheid (in procenten) op 1.50 m hoogte tijdens de waarneming; 
+# WW       = Weercode (00-99), visueel(WW) of automatisch(WaWa) waargenomen, voor het actuele weer of het weer in het afgelopen uur. Zie http://bibliotheek.knmi.nl/scholierenpdf/weercodes_Nederland; 
+# IX       = Weercode indicator voor de wijze van waarnemen op een bemand of automatisch station (1=bemand gebruikmakend van code uit visuele waarnemingen, 2,3=bemand en weggelaten (geen belangrijk weersverschijnsel, geen gegevens), 4=automatisch en opgenomen (gebruikmakend van code uit visuele waarnemingen), 5,6=automatisch en weggelaten (geen belangrijk weersverschijnsel, geen gegevens), 7=automatisch gebruikmakend van code uit automatische waarnemingen); 
+# M        = Mist 0=niet voorgekomen, 1=wel voorgekomen in het voorgaande uur en/of tijdens de waarneming; 
+# R        = Regen 0=niet voorgekomen, 1=wel voorgekomen in het voorgaande uur en/of tijdens de waarneming; 
+# S        = Sneeuw 0=niet voorgekomen, 1=wel voorgekomen in het voorgaande uur en/of tijdens de waarneming; 
+# O        = Onweer 0=niet voorgekomen, 1=wel voorgekomen in het voorgaande uur en/of tijdens de waarneming; 
+# Y        = IJsvorming 0=niet voorgekomen, 1=wel voorgekomen in het voorgaande uur en/of tijdens de waarneming; 
+# 
+# STN,YYYYMMDD,   HH,   DD,   FH,   FF,   FX,    T, T10N,   TD,   SQ,    Q,   DR,   RH,    P,   VV,    N,    U,   WW,   IX,    M,    R,    S,    O,    Y
+# 
