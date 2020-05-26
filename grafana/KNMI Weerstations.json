@@ -14,7 +14,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "6.7.2"
+      "version": "6.7.3"
     },
     {
       "type": "panel",
@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1588961245259,
+  "iteration": 1590478059269,
   "links": [],
   "panels": [
     {
@@ -464,6 +464,8 @@
           "measurement": "/^$Stations$/",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT max(\"RH\")  / 10 FROM /^$Stations$/ WHERE (\"RH\" > -1) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -513,6 +515,8 @@
           "measurement": "/^$Stations$/",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT max(\"RH\") *-0.05 FROM /^$Stations$/ WHERE (\"RH\" = '-1') AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
@@ -1375,6 +1379,7 @@
           "$$hashKey": "object:5582",
           "alias": "Mist",
           "fill": 0,
+          "hideTooltip": true,
           "linewidth": 2,
           "steppedLine": false,
           "yaxis": 2
