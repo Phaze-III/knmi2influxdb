@@ -14,7 +14,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "6.7.3"
+      "version": "6.7.4"
     },
     {
       "type": "panel",
@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1592057570870,
+  "iteration": 1597578091606,
   "links": [],
   "panels": [
     {
@@ -1335,8 +1335,8 @@
     {
       "aliasColors": {
         "< 5km": "rgb(85, 85, 85)",
-        "> 35km": "rgb(255, 255, 255)",
-        "> 5km": "rgb(180, 180, 180)",
+        "> 35km": "rgb(200, 200, 200)",
+        "> 5km": "rgb(150, 150, 150)",
         "Mist": "dark-red"
       },
       "bars": false,
