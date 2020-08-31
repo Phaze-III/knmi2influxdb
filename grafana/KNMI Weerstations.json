@@ -47,7 +47,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1597578091606,
+  "iteration": 1598784929686,
   "links": [],
   "panels": [
     {
@@ -1626,8 +1626,8 @@
     },
     {
       "aliasColors": {
-        "Bovenlucht onzichtbaar": "rgb(255, 255, 255)",
-        "Dekkingsgraad": "rgb(164, 164, 164)"
+        "Bovenlucht onzichtbaar": "dark-red",
+        "Dekkingsgraad": "rgb(179, 179, 179)"
       },
       "bars": false,
       "dashLength": 10,
