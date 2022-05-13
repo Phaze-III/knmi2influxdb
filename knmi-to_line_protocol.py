@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/env python3
 
 # Adapted from https://github.com/tomru/cram-luftdaten.git
 
@@ -65,6 +65,7 @@ def get_timestamp(timestr):
 
 NAME_MAP = {
     "OrigField": "renamedfield",
+    "H": "HH",
 }
 
 Station_Map = {

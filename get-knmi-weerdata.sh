@@ -1,51 +1,64 @@
 #!/bin/sh
 
+# Documentation: https://www.knmi.nl/kennis-en-datacentrum/achtergrond/data-ophalen-vanuit-een-script
+#
+# Deviations from documentation:
+#   - The hour-field in the result is 'H', not 'HH' as shown.
+#     This script converts 'H' to 'HH' to keep in line with the
+#     original format used. 'HH' is also used in the archived data.
+#   - End hour has to be specified as 00 to get the last hour '24'
+
 # TODO
 # - Use and store intermediate files
-# - Split larger (> 100000 lines) influx input files in smaller chunks
+
+KNMIURL="https://daggegevens.knmi.nl/klimatologie/uurgegevens"
 
 export INFLUXDB_DATABASE=knmi
 export INFLUXDB_HOST=localhost
 export INFLUXDB_PORT=8086
 
+NDAYS=5
+
 # Set begin and end date to yesterday
 if date --version >/dev/null 2>&1
 then
    # GNU date
-   byear=$(date -d "1 days ago" "+%Y")
-   bmonth=$(date -d "1 days ago" "+%m")
-   bday=$(date -d "1 days ago" "+%d")
+   StartDate=$(date -d "${NDAYS} days ago" "+%Y%m%d")
+   EndDate=$(date "+%Y%m%d")
 else
    # BSD date
-   byear=$(date -j -v-1d "+%Y")
-   bmonth=$(date -j -v-1d "+%m")
-   bday=$(date -j -v-1d "+%d")
+   StartDate=$(date -j -v-${NDAYS}d "+%Y%m%d")
+   EndDate=$(date -j "+%Y%m%d")
 fi
 
-eyear=${byear}
-emonth=${bmonth}
-eday=${bday}
+# Override automatic begin- and end-dates by changing and uncommenting a StartDate
+# or EndDate assignment. Can be used when bulk-importing historical data. Data is
+# fetched per day to stay within InfluxDB limits.
 
-# Override automatic begin- and end-dates by uncommenting a b*
-# and/or e* block. To be used when bulk-importing historical data.
-# Blocks of 3 months should be within InfluxDB limits.
-
-#byear=2020
-#bmonth=01
-#bday=01
-
-#eyear=2020
-#emonth=03
-#eday=31
+#StartDate=20211120
+#EndDate=20211118
 
 # Sensor can be ALL or a subset
 # 350 370 375 | 350:370:375 | ALL
 for Sensor in ALL
 do
-   curl -s --data "stns=${Sensor}&vars=ALL" \
-           --data "byear=${byear}&bmonth=${bmonth}&bday=${bday}" \
-           --data "eyear=${eyear}&emonth=${emonth}&eday=${eday}" \
-              http://projects.knmi.nl/klimatologie/uurgegevens/getdata_uur.cgi |\
-     tr -d '\r' | sed -e 's/^# STN,YYYYMMDD/STN,YYYYMMDD/' -e '/^#/d' |\
-     tr -d ' ' | knmi-to_line_protocol.py | to_influx_db.sh
+   Date=${StartDate}
+   while [ ${Date} -le ${EndDate} ]
+   do
+      curl -s --data "stns=${Sensor}&vars=ALL" \
+              --data "start=${Date}01" \
+              --data "end=${Date}00" \
+                 ${KNMIURL} |\
+        tr -d '\r' | sed -e 's/^# STN,YYYYMMDD/STN,YYYYMMDD/' \
+                         -e '/^\"*#/d' \
+                         -e 's/,H,/,HH,/' |\
+        tr -d ' ' | knmi-to_line_protocol.py | to_influx_db.sh
+      if date --version >/dev/null 2>&1
+      then
+         # GNU date
+         Date=$(date -d "$(echo ${Date} | sed -e 's/^\([0-9][0-9][0-9][0-9]\)\([0-9][0-9]\)\([-9][0-9]\)/\1-\2-\3/') +1 day" "+%Y%m%d")
+      else
+         Date=$(date -j -v+1d -f "%Y%m%d" "${Date}" "+%Y%m%d")
+      fi
+   done
 done
