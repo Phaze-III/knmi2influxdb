@@ -38,18 +38,28 @@ fi
 #StartDate=20211120
 #EndDate=20211118
 
+# Vars can be ALL or a subset
+# ALL returns duplicate field names for HH and YYYYMMDD since around 20240125
+# without data in the corresponding columns. The duplicate names are filtered
+# out in the sed pre-parser.
+
+Vars="ALL"
+# Vars="WIND:TEMP:SUNR:PRCP:P:VICL:WW:IX:WEER" # Same set and order as ALL
+
 # Sensor can be ALL or a subset
 # 350 370 375 | 350:370:375 | ALL
+
 for Sensor in ALL
 do
    Date=${StartDate}
    while [ ${Date} -le ${EndDate} ]
    do
-      curl -s --data "stns=${Sensor}&vars=ALL" \
+      curl -s --data "stns=${Sensor}&vars=${Vars}" \
               --data "start=${Date}01" \
               --data "end=${Date}00" \
                  ${KNMIURL} |\
         tr -d '\r' | sed -e 's/^# STN,YYYYMMDD/STN,YYYYMMDD/' \
+                         -e 's/,   HH,YYYYMMDD$//' \
                          -e '/^\"*#/d' \
                          -e 's/,H,/,HH,/' |\
         tr -d ' ' | knmi-to_line_protocol.py | to_influx_db.sh
