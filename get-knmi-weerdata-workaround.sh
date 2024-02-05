@@ -46,7 +46,8 @@ ALL="209 210 215 225 235 240 242 248 249 251 257 258 260 265 267 269 270 273 275
 for Station in ${ALL}
 do
    DataFile=uurgeg_${Station}_${Period}
-   if wget -q -N https://cdn.knmi.nl/knmi/map/page/klimatologie/gegevens/uurgegevens/${DataFile}.zip
+   GetResult=$(wget -q --server-response -N https://cdn.knmi.nl/knmi/map/page/klimatologie/gegevens/uurgegevens/${DataFile}.zip 2>&1 | grep "HTTP/" | awk '{print $2}')
+   if [ "${GetResult}" == "200" ]
    then
       unzip -a -o ${DataFile}.zip
       if [ -r ${DataFile}.txt ]
