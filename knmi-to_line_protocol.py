@@ -119,6 +119,7 @@ Station_Map = {
     "377": "Ell",
     "380": "Maastricht",
     "391": "Arcen",
+    "392": "Horst",
 }
 READER = csv.DictReader(sys.stdin, delimiter=",")
 for row in READER:
